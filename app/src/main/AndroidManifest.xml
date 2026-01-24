@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeCheckProject">
         <activity
-            android:name=".JavaPage"
+            android:name=".HelpPage"
+            android:exported="false" />
+        <activity
+            android:name=".LandingPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,12 +31,10 @@
             android:exported="false" />
         <activity
             android:name=".HomePage"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
-            android:name=".LandingPage"
-            android:exported="false"/>
-
+            android:name=".JavaPage"
+            android:exported="false" />
     </application>
 
 </manifest>
