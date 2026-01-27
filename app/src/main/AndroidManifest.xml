@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeCheckProject">
         <activity
+            android:name=".MySQLPage"
+            android:exported="false" />
+        <activity
             android:name=".ScorePage"
             android:exported="false" />
         <activity
@@ -38,8 +41,8 @@
         <activity
             android:name=".JavaPage"
             android:exported="false" />
-        <service android:name=".Music"/>
 
+        <service android:name=".Music" />
     </application>
 
 </manifest>

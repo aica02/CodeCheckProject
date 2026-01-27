@@ -34,6 +34,11 @@ public class CategoriesPage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        mysqlBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(CategoriesPage.this, MySQLPage.class);
+            startActivity(intent);
+        });
+
         backBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CategoriesPage.this, HomePage.class);
             startActivity(intent);

@@ -10,7 +10,7 @@ import java.util.*;
 
 public class JavaPage extends AppCompatActivity {
 
-    TextView tvCode, tvTimer;
+    TextView tvCode, tvTimer, tvScore;
     Button btn1, btn2, btn3, btn4;
     ProgressBar progressBar;
 
@@ -24,7 +24,7 @@ public class JavaPage extends AppCompatActivity {
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
-    final int TIME_PER_QUESTION = 10;
+    final int TIME_PER_QUESTION = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class JavaPage extends AppCompatActivity {
         setContentView(R.layout.activity_java_page);
 
         tvCode = findViewById(R.id.tvCode);
+        tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);
 
         btn1 = findViewById(R.id.btn1);
@@ -116,21 +117,23 @@ public class JavaPage extends AppCompatActivity {
         int scoreThisQuestion = 0;
 
         if (selected.equals(answers[q])) {
-            scoreThisQuestion = 10 * (int) timeLeft;
+            scoreThisQuestion = 5 * (int) timeLeft;
             Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 
         totalScore += scoreThisQuestion;
+
         index++;
         loadQuestion();
+        tvScore.setText("Score: "+totalScore);
     }
 
     void startTimer() {
-        timer = new CountDownTimer(TIME_PER_QUESTION * 1000, 1000) {
+        timer = new CountDownTimer(TIME_PER_QUESTION * 2000, 2000) {
             public void onTick(long ms) {
-                tvTimer.setText("Time-Left: " + (ms / 1000));
+                tvTimer.setText("Time-Left: " + (ms / 2000));
             }
 
             public void onFinish() {

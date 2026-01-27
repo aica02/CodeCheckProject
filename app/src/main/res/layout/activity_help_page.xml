@@ -58,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:lineSpacing="4dp"
+                android:lineSpacingExtra="4dp"
+                android:lineSpacingMultiplier="1.2"
                 android:text="ABOUT THE GAME\n\nCODE CHECK is a coding quiz game where you
                 analyze code and choose the correct answer.
                 \n\nHOW TO PLAY:\n1. The game displays a code snippet.
