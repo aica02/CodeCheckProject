@@ -31,7 +31,7 @@ public class CategoriesPage extends AppCompatActivity {
         });
 
         cssBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoriesPage.this, SettingsPage.class);
+            Intent intent = new Intent(CategoriesPage.this, CssPage.class);
             startActivity(intent);
         });
 

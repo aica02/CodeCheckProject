@@ -14,7 +14,66 @@ public class JavaPage extends AppCompatActivity {
     Button btn1, btn2, btn3, btn4;
     ProgressBar progressBar;
 
-    String[] questions = { "int a = 5; a += 3; System.out.println(a);", "int x = 10; x--; System.out.println(x);", "int a = 4; int b = 2; System.out.println(a * b + 1);", "int x = 5; System.out.println(++x);", "int a = 7; int b = 2; System.out.println(a / b);", "int x = 3; x *= 2; System.out.println(x);", "int a = 10; int b = 3; System.out.println(a % b);", "int x = 5; System.out.println(x++ + x);", "int a = 2; int b = 3; System.out.println(a == b);", "int x = 4; System.out.println(x > 3 && x < 10);", "int x = 1; System.out.println(x++);", "int x = 1; System.out.println(++x);", "int a = 6; System.out.println(a / 2);", "int a = 6; System.out.println(a % 4);", "boolean b = true; System.out.println(!b);", "int a = 3; a += a; System.out.println(a);", "int x = 9; x -= 4; System.out.println(x);", "int a = 2; System.out.println(a * a);", "int a = 10; a /= 2; System.out.println(a);", "int x = 8; System.out.println(x > 5);", "int a = 1; int b = 2; System.out.println(a < b);", "int a = 5; int b = 5; System.out.println(a == b);", "int x = 7; System.out.println(x >= 7);", "int x = 0; System.out.println(x == 0);", "int a = 4; a--; System.out.println(a);", "int a = 4; --a; System.out.println(a);", "int x = 3; System.out.println(x + 2 * 2);", "int x = 10; System.out.println(x / 3);", "int x = 10; System.out.println(x % 3);", "int x = 5; System.out.println(x * 0);", "int x = 1; System.out.println(x == 1 && x > 0);", "int x = 1; System.out.println(x == 1 || x > 5);", "boolean b = false; System.out.println(b || true);", "boolean b = false; System.out.println(!b);", "int a = 5; System.out.println(a >= 5);", "int a = 3; System.out.println(a <= 2);", "int x = 9; System.out.println(x != 9);", "int x = 9; System.out.println(x != 8);", "int a = 1; System.out.println(a + 1 + 1);", "int a = 2; System.out.println(a * 3 - 1);" };
+    String[] questions = {
+            "int a = 5; a += 5; System.out.println(a);",
+            "int x = 10; x--; System.out.println(x);",
+            "int a = 4; int b = 2; System.out.println(a * b + 1);",
+            "int x = 5; System.out.println(++x);",
+            "int a = 7; int b = 2; System.out.println(a / b);",
+            "int x = 3; x *= 2; System.out.println(x);",
+            "int a = 10; int b = 3; System.out.println(a % b);",
+            "int x = 5; System.out.println(x++ + x);",
+            "int a = 2; int b = 3; System.out.println(a == b);",
+            "int x = 4; System.out.println(x > 3 && x < 10);",
+            "int x = 1; System.out.println(x++);",
+            "int x = 1; System.out.println(++x);",
+            "int a = 6; System.out.println(a / 2);",
+            "int a = 6; System.out.println(a % 4);",
+            "boolean b = true; System.out.println(!b);",
+            "int a = 3; a += a; System.out.println(a);",
+            "int x = 9; x -= 4; System.out.println(x);",
+            "int a = 2; System.out.println(a * a);",
+            "int a = 10; a /= 2; System.out.println(a);",
+            "int x = 8; System.out.println(x > 5);",
+            "int a = 1; int b = 2; System.out.println(a < b);",
+            "int a = 5; int b = 5; System.out.println(a == b);",
+            "int x = 7; System.out.println(x >= 7);",
+            "int x = 0; System.out.println(x == 0);",
+            "int a = 4; a--; System.out.println(a);",
+            "int a = 4; --a; System.out.println(a);",
+            "int x = 3; System.out.println(x + 2 * 2);",
+            "int x = 10; System.out.println(x / 3);",
+            "int x = 10; System.out.println(x % 3);",
+            "int x = 5; System.out.println(x * 0);",
+            "int x = 1; System.out.println(x == 1 && x > 0);",
+            "int x = 1; System.out.println(x == 1 || x > 5);",
+            "boolean b = false; System.out.println(b || true);",
+            "boolean b = false; System.out.println(!b);",
+            "int a = 5; System.out.println(a >= 5);",
+            "int a = 3; System.out.println(a <= 2);",
+            "int x = 9; System.out.println(x != 9);",
+            "int x = 9; System.out.println(x != 8);",
+            "int a = 1; System.out.println(a + 1 + 1);",
+            "int a = 2; System.out.println(a * 3 - 1);",
+            "int a = 7; System.out.println(a % 2);",
+            "int x = 5; x += 2; System.out.println(x);",
+            "int x = 10; x -= 3; System.out.println(x);",
+            "int a = 8; System.out.println(a / 4);",
+            "int a = 8; System.out.println(a % 5);",
+            "boolean b = true; System.out.println(b && false);",
+            "boolean b = true; System.out.println(b || false);",
+            "int x = 4; System.out.println(x * 2);",
+            "int a = 3; System.out.println(a + 4);",
+            "int x = 6; System.out.println(x - 3);",
+            "int x = 7; System.out.println(x * 0);",
+            "int a = 2; int b = 5; System.out.println(a < b);",
+            "int a = 2; int b = 5; System.out.println(a > b);",
+            "boolean c = false; System.out.println(!c);",
+            "int a = 3; int b = 3; System.out.println(a == b);",
+            "int x = 10; System.out.println(x / 2);",
+            "int x = 10; System.out.println(x % 4);"
+    };
+
     String[][] options = new String[50][4];
     String[] answers = new String[50];
 
@@ -65,14 +124,59 @@ public class JavaPage extends AppCompatActivity {
             options[i][1] = "false";
             options[i][2] = "Error";
             options[i][3] = "0";
-            answers[i] = "true";
+            answers[i] = "0";
         }
 
-        answers[0] = "8";
+        answers[0] = "10";
         answers[1] = "9";
         answers[2] = "9";
         answers[3] = "6";
         answers[4] = "3";
+        answers[5] = "6";
+        answers[6] = "1";
+        answers[7] = "11";
+        answers[8] = "false";
+        answers[9] = "true";
+        answers[10] = "1";
+        answers[11] = "2";
+        answers[12] = "3";
+        answers[13] = "2";
+        answers[14] = "false";
+        answers[15] = "6";
+        answers[16] = "5";
+        answers[17] = "4";
+        answers[18] = "5";
+        answers[19] = "true";
+        answers[20] = "true";
+        answers[21] = "true";
+        answers[22] = "true";
+        answers[23] = "true";
+        answers[24] = "3";
+        answers[25] = "3";
+        answers[26] = "7";
+        answers[27] = "3";
+        answers[28] = "1";
+        answers[29] = "0";
+        answers[30] = "true";
+        answers[31] = "true";
+        answers[32] = "true";
+        answers[33] = "true";
+        answers[34] = "true";
+        answers[35] = "false";
+        answers[36] = "false";
+        answers[37] = "3";
+        answers[38] = "5";
+        answers[39] = "1";
+        answers[40] = "7";
+        answers[41] = "7";
+        answers[42] = "2";
+        answers[43] = "3";
+        answers[44] = "false";
+        answers[45] = "true";
+        answers[46] = "8";
+        answers[47] = "7";
+        answers[48] = "6";
+        answers[49] = "2";
     }
 
     void generateRandomQuestions() {
