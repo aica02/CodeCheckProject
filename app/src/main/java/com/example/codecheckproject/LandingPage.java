@@ -24,6 +24,7 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_landing_page);
+        UIHelper.hideSystemUI(this);
 
         imageView = findViewById(R.id.imageView);
         LinearLayout rootLayout = findViewById(R.id.main);

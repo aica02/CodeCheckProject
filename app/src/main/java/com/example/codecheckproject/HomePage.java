@@ -14,6 +14,8 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        UIHelper.hideSystemUI(this);
+
 
         playBtn = findViewById(R.id.playBtn);
         settingsBtn = findViewById(R.id.settingsBtn);
@@ -31,4 +33,6 @@ public class HomePage extends AppCompatActivity {
 
         exitBtn.setOnClickListener(v -> finishAffinity());
     }
+
+
 }
