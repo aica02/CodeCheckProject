@@ -45,35 +45,41 @@
             android:fontFamily="@font/lato_bold"
             android:layout_marginBottom="15dp"/>
 
-        <ScrollView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/green"
-            android:padding="15dp">
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="10dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:backgroundTint="@color/green">
 
-            <TextView
-                android:id="@+id/helpContent"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:lineSpacingExtra="4dp"
-                android:lineSpacingMultiplier="1.2"
-                android:text="ABOUT THE GAME\n\nCODE CHECK is a coding quiz game where you
-    analyze code and choose the correct answer.
-    \n\nHOW TO PLAY:\n1. The game displays a code snippet.
-    \n2. You will see 4 answer choices.\n3. Select the correct answer.\n4. Each correct answer gives points.
-    \n5. Wrong answers may reduce your score.
-    \n\nCATEGORIES:\n• Java – Questions about Java programming.
-    \n• CSS – Questions about web design and styling.
-    \n• SQL – Questions about database queries.
-    \n\nTIPS:\n• Read the code carefully.\n• Think logically before choosing.\n• Practice to improve your coding skills.
-    \n\nGOAL:
-    \nTest and improve your coding knowledge in a fun and interactive way!" />
+                android:layout_height="match_parent"
+                android:padding="15dp">
 
-        </ScrollView>
-
+                <TextView
+                    android:id="@+id/helpContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:lineSpacingExtra="4dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="ABOUT THE GAME\n\nCODE CHECK is a coding quiz game where you analyze code and choose the correct answer.
+            \n\nHOW TO PLAY:\n1. The game displays a code snippet.
+            \n2. You will see 4 answer choices.\n3. Select the correct answer.\n4. Each correct answer gives points.
+            \n5. Wrong answers may reduce your score.
+            \n\nCATEGORIES:\n• Java – Questions about Java programming.
+            \n• CSS – Questions about web design and styling.
+            \n• SQL – Questions about database queries.
+            \n\nTIPS:\n• Read the code carefully.\n• Think logically before choosing.\n• Practice to improve your coding skills.
+            \n\nGOAL:
+            \nTest and improve your coding knowledge in a fun and interactive way!" />
+            </ScrollView>
+        </com.google.android.material.card.MaterialCardView>
         <Button
             android:id="@+id/backBtn"
             android:layout_width="180dp"
@@ -82,8 +88,5 @@
             android:backgroundTint="@color/green"
             app:cornerRadius="10dp"
             android:layout_marginTop="15dp"/>
-
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

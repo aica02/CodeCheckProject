@@ -34,6 +34,7 @@
             android:fontFamily="@font/lato_bold"/>
 
         <TextView
+            android:id="@+id/Choose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CHOOSE AN OPTION"

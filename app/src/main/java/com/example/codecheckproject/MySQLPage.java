@@ -186,6 +186,7 @@ public class MySQLPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_sqlpage);
         UIHelper.hideSystemUI(this);
+        stopService(new Intent(this, Music.class));
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);

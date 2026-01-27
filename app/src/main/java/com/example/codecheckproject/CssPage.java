@@ -147,6 +147,7 @@ public class CssPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_css_page);
         UIHelper.hideSystemUI(this);
+        stopService(new Intent(this, Music.class));
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);

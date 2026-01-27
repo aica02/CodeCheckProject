@@ -1,8 +1,12 @@
 package com.example.codecheckproject;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +14,7 @@ public class HomePage extends AppCompatActivity {
 
     private Button playBtn, settingsBtn, exitBtn;
 
+    private ObjectAnimator blinkAnimator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,19 @@ public class HomePage extends AppCompatActivity {
             stopService(new Intent(HomePage.this, Music.class));
             finishAffinity();
         });
+    }
+
+    protected void onStart() {
+        super.onStart();
+        TextView tapToEnter = findViewById(R.id.Choose);
+
+        blinkAnimator = ObjectAnimator.ofFloat(tapToEnter, "alpha", 1f, 0f);
+        blinkAnimator.setDuration(800); // speed of blink
+        blinkAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        blinkAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        blinkAnimator.start();
+
+
     }
 
 

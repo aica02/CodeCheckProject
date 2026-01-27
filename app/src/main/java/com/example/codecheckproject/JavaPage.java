@@ -168,6 +168,7 @@ public class JavaPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_page);
         UIHelper.hideSystemUI(this);
+        stopService(new Intent(this, Music.class));
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
