@@ -38,6 +38,8 @@ public class LandingPage extends AppCompatActivity {
             Intent intent = new Intent(LandingPage.this, HomePage.class);
             startActivity(intent);
         });
+
+        startService(new Intent(this, Music.class));
     }
 
     @Override
@@ -58,4 +60,5 @@ public class LandingPage extends AppCompatActivity {
             animator.cancel();
         }
     }
+
 }
