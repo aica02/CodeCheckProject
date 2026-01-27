@@ -19,6 +19,7 @@ public class CategoriesPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories_page);
 
+        UIHelper.hideSystemUI(this);
         javaBtn = findViewById(R.id.javaBtn);
         cssBtn = findViewById(R.id.cssBtn);
         mysqlBtn = findViewById(R.id.mysqlBtn);
@@ -42,6 +43,7 @@ public class CategoriesPage extends AppCompatActivity {
         backBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CategoriesPage.this, HomePage.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_in_right );
         });
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,9 @@ public class LandingPage extends AppCompatActivity {
 
     private ImageView imageView;
     private ObjectAnimator animator;
+    private ObjectAnimator blinkAnimator;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class LandingPage extends AppCompatActivity {
         rootLayout.setOnClickListener(v -> {
             Intent intent = new Intent(LandingPage.this, HomePage.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.scale_fade_in, R.anim.scale_fade_out);
         });
 
         startService(new Intent(this, Music.class));
@@ -52,14 +57,31 @@ public class LandingPage extends AppCompatActivity {
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setInterpolator(new LinearInterpolator());
         animator.start();
+
+        TextView tapToEnter = findViewById(R.id.textView4);
+
+        blinkAnimator = ObjectAnimator.ofFloat(tapToEnter, "alpha", 1f, 0f);
+        blinkAnimator.setDuration(800); // speed of blink
+        blinkAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        blinkAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        blinkAnimator.start();
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        stopService(new Intent(this, Music.class));
         if (animator != null) {
             animator.cancel();
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(this, Music.class));
+    }
+
 
 }

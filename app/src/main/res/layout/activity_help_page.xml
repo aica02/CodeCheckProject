@@ -61,16 +61,17 @@
                 android:lineSpacingExtra="4dp"
                 android:lineSpacingMultiplier="1.2"
                 android:text="ABOUT THE GAME\n\nCODE CHECK is a coding quiz game where you
-                analyze code and choose the correct answer.
-                \n\nHOW TO PLAY:\n1. The game displays a code snippet.
-                \n2. You will see 4 answer choices.\n3. Select the correct answer.\n4. Each correct answer gives points.
-                \n5. Wrong answers may reduce your score.
-                \n\nCATEGORIES:\n• Java – Questions about Java programming.
-                \n• CSS – Questions about web design and styling.
-                \n• SQL – Questions about database queries.
-                \n\nTIPS:\n• Read the code carefully.\n• Think logically before choosing.\n• Practice to improve your coding skills.\n\nGOAL:
-                \nTest and improve your coding knowledge in a fun and interactive way!"
-                />
+    analyze code and choose the correct answer.
+    \n\nHOW TO PLAY:\n1. The game displays a code snippet.
+    \n2. You will see 4 answer choices.\n3. Select the correct answer.\n4. Each correct answer gives points.
+    \n5. Wrong answers may reduce your score.
+    \n\nCATEGORIES:\n• Java – Questions about Java programming.
+    \n• CSS – Questions about web design and styling.
+    \n• SQL – Questions about database queries.
+    \n\nTIPS:\n• Read the code carefully.\n• Think logically before choosing.\n• Practice to improve your coding skills.
+    \n\nGOAL:
+    \nTest and improve your coding knowledge in a fun and interactive way!" />
+
         </ScrollView>
 
         <Button

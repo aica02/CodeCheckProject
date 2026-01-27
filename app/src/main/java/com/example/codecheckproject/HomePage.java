@@ -24,6 +24,7 @@ public class HomePage extends AppCompatActivity {
         playBtn.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, CategoriesPage.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.scale_fade_in, R.anim.scale_fade_out);
         });
 
         settingsBtn.setOnClickListener(v -> {
@@ -31,7 +32,10 @@ public class HomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        exitBtn.setOnClickListener(v -> finishAffinity());
+        exitBtn.setOnClickListener(v -> {
+            stopService(new Intent(HomePage.this, Music.class));
+            finishAffinity();
+        });
     }
 
 

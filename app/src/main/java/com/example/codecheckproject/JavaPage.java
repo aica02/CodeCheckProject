@@ -30,6 +30,7 @@ public class JavaPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_page);
+        UIHelper.hideSystemUI(this);
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
