@@ -74,8 +74,86 @@ public class JavaPage extends AppCompatActivity {
             "int x = 10; System.out.println(x % 4);"
     };
 
-    String[][] options = new String[50][4];
-    String[] answers = new String[50];
+    String[][] options = {
+            {"10","5","15","0"},
+            {"9","10","11","8"},
+            {"9","8","7","6"},
+            {"6","5","7","8"},
+            {"3","2","4","1"},
+            {"6","3","5","9"},
+            {"1","0","2","3"},
+            {"11","10","12","9"},
+            {"false","true","0","1"},
+            {"true","false","0","1"},
+            {"1","0","2","3"},
+            {"2","1","0","3"},
+            {"3","2","6","1"},
+            {"2","3","1","4"},
+            {"false","true","0","1"},
+            {"6","3","5","4"},
+            {"5","4","6","3"},
+            {"4","2","3","1"},
+            {"5","10","15","20"},
+            {"true","false","0","1"},
+            {"true","false","1","0"},
+            {"true","false","1","1"},
+            {"true","false","1","0"},
+            {"true","false","0","1"},
+            {"3","4","5","2"},
+            {"3","2","4","1"},
+            {"7","6","5","4"},
+            {"3","4","5","6"},
+            {"1","2","0","3"},
+            {"1","0","2","3"},
+            {"0","1","2","3"},
+            {"true","false","1","0"},
+            {"true","false","1","0"},
+            {"true","false","1","0"},
+            {"false","true","1","0"},
+            {"true","false","1","0"},
+            {"true","false","1","0"},
+            {"3","4","5","6"},
+            {"7","8","6","5"},
+            {"2","3","4","5"},
+            {"7","5","6","4"},
+            {"2","1","3","0"},
+            {"7","5","6","4"},
+            {"false","true","1","0"},
+            {"true","false","1","0"},
+            {"8","9","10","7"},
+            {"7","5","6","4"},
+            {"3","4","5","6"},
+            {"0","1","2","3"},
+            {"true","false","0","1"},
+            {"false","true","0","1"},
+            {"false","true","0","1"},
+            {"true","false","0","1"},
+            {"5","6","7","4"},
+            {"7","6","5","8"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"5","6","7","8"},
+            {"7","6","5","8"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"3","4","5","6"},
+            {"6","5","7","4"},
+            {"3","2","4","1"},
+            {"5","6","7","8"},
+            {"5","6","7","8"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"8","7","6","5"},
+            {"7","6","5","8"}
+    };
+
+    String[] answers = {
+            "10","9","9","6","3","6","1","11","false","true",
+            "1","2","3","2","false","6","5","4","5","true",
+            "true","true","true","true","3","3","7","3","1","0",
+            "true","true","true","false","true","true","3","7","2","1",
+            "false","true","8","7","3","3","0","true","5","7"
+    };
 
     int[] randomQuestions;
     int index = 0;
@@ -94,15 +172,12 @@ public class JavaPage extends AppCompatActivity {
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);
-
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
-
         progressBar = findViewById(R.id.progressBar);
 
-        setupAnswers();
         generateRandomQuestions();
 
         View.OnClickListener listener = v -> {
@@ -118,76 +193,13 @@ public class JavaPage extends AppCompatActivity {
         loadQuestion();
     }
 
-    void setupAnswers() {
-        for (int i = 0; i < 50; i++) {
-            options[i][0] = "true";
-            options[i][1] = "false";
-            options[i][2] = "Error";
-            options[i][3] = "0";
-            answers[i] = "0";
-        }
-
-        answers[0] = "10";
-        answers[1] = "9";
-        answers[2] = "9";
-        answers[3] = "6";
-        answers[4] = "3";
-        answers[5] = "6";
-        answers[6] = "1";
-        answers[7] = "11";
-        answers[8] = "false";
-        answers[9] = "true";
-        answers[10] = "1";
-        answers[11] = "2";
-        answers[12] = "3";
-        answers[13] = "2";
-        answers[14] = "false";
-        answers[15] = "6";
-        answers[16] = "5";
-        answers[17] = "4";
-        answers[18] = "5";
-        answers[19] = "true";
-        answers[20] = "true";
-        answers[21] = "true";
-        answers[22] = "true";
-        answers[23] = "true";
-        answers[24] = "3";
-        answers[25] = "3";
-        answers[26] = "7";
-        answers[27] = "3";
-        answers[28] = "1";
-        answers[29] = "0";
-        answers[30] = "true";
-        answers[31] = "true";
-        answers[32] = "true";
-        answers[33] = "true";
-        answers[34] = "true";
-        answers[35] = "false";
-        answers[36] = "false";
-        answers[37] = "3";
-        answers[38] = "5";
-        answers[39] = "1";
-        answers[40] = "7";
-        answers[41] = "7";
-        answers[42] = "2";
-        answers[43] = "3";
-        answers[44] = "false";
-        answers[45] = "true";
-        answers[46] = "8";
-        answers[47] = "7";
-        answers[48] = "6";
-        answers[49] = "2";
-    }
-
     void generateRandomQuestions() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < questions.length; i++) list.add(i);
         Collections.shuffle(list);
 
         randomQuestions = new int[QUESTION_COUNT];
-        for (int i = 0; i < QUESTION_COUNT; i++) {
-            randomQuestions[i] = list.get(i);
-        }
+        for (int i = 0; i < QUESTION_COUNT; i++) randomQuestions[i] = list.get(i);
     }
 
     void loadQuestion() {
@@ -197,11 +209,9 @@ public class JavaPage extends AppCompatActivity {
         }
 
         int q = randomQuestions[index];
-
         tvCode.setText(questions[q]);
 
-        List<String> shuffled = new ArrayList<>();
-        Collections.addAll(shuffled, options[q]);
+        List<String> shuffled = new ArrayList<>(Arrays.asList(options[q]));
         Collections.shuffle(shuffled);
 
         btn1.setText(shuffled.get(0));
@@ -210,6 +220,7 @@ public class JavaPage extends AppCompatActivity {
         btn4.setText(shuffled.get(3));
 
         progressBar.setProgress((index + 1) * 100 / QUESTION_COUNT);
+
         startTimer();
     }
 
@@ -217,7 +228,6 @@ public class JavaPage extends AppCompatActivity {
         if (timer != null) timer.cancel();
 
         int q = randomQuestions[index];
-
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
         int scoreThisQuestion = 0;
 
@@ -229,16 +239,15 @@ public class JavaPage extends AppCompatActivity {
         }
 
         totalScore += scoreThisQuestion;
-
         index++;
         loadQuestion();
-        tvScore.setText("Score: "+totalScore);
+        tvScore.setText("Score: " + totalScore);
     }
 
     void startTimer() {
-        timer = new CountDownTimer(TIME_PER_QUESTION * 2000, 2000) {
+        timer = new CountDownTimer(TIME_PER_QUESTION * 1000, 1000) {
             public void onTick(long ms) {
-                tvTimer.setText("Time-Left: " + (ms / 2000));
+                tvTimer.setText("Time-Left: " + (ms / 1000));
             }
 
             public void onFinish() {

@@ -265,9 +265,9 @@ public class MySQLPage extends AppCompatActivity {
     }
 
     void startTimer() {
-        timer = new CountDownTimer(TIME_PER_QUESTION * 2000, 2000) {
+        timer = new CountDownTimer(TIME_PER_QUESTION * 1000, 1000) {
             public void onTick(long ms) {
-                tvTimer.setText("Time-Left: " + (ms / 2000));
+                tvTimer.setText("Time-Left: " + (ms / 1000));
             }
 
             public void onFinish() {
