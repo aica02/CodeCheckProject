@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeCheckProject">
         <activity
+            android:name=".ScorePage"
+            android:exported="false" />
+        <activity
             android:name=".HelpPage"
             android:exported="false" />
         <activity

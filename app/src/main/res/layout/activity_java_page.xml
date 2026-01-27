@@ -28,6 +28,7 @@
                 android:paddingBottom="16dp">
 
                 <TextView
+                    android:id="@+id/tvTimer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -38,6 +39,7 @@
                     android:fontFamily="@font/lato_bold"/>
 
                 <TextView
+                    android:id="@+id/tvScore"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
