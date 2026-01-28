@@ -7,12 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue"
         android:orientation="vertical"
         android:gravity="center">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -76,9 +78,7 @@
             android:text="Exit"
             android:backgroundTint="@color/green"
             app:cornerRadius="10dp" />
-
     </LinearLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

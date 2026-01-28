@@ -181,6 +181,9 @@ public class JavaPage extends AppCompatActivity {
             case "hard":
                 TIME_PER_QUESTION = 10;
                 break;
+            default:
+                TIME_PER_QUESTION = 10;
+                break;
         }
 
 

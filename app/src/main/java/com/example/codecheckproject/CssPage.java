@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.*;
 
 public class CssPage extends AppCompatActivity {
-
     TextView tvCode, tvTimer, tvScore;
     Button btn1, btn2, btn3, btn4;
     ProgressBar progressBar;
@@ -140,7 +139,7 @@ public class CssPage extends AppCompatActivity {
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
-    final int TIME_PER_QUESTION = 20;
+    int TIME_PER_QUESTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +148,22 @@ public class CssPage extends AppCompatActivity {
         UIHelper.hideSystemUI(this);
         stopService(new Intent(this, Music.class));
 
+        String difficulty = getIntent().getStringExtra("difficulty");
+
+        switch (difficulty != null ? difficulty : "easy") {
+            case "easy":
+                TIME_PER_QUESTION = 30;
+                break;
+            case "medium":
+                TIME_PER_QUESTION = 20;
+                break;
+            case "hard":
+                TIME_PER_QUESTION = 10;
+                break;
+            default:
+                TIME_PER_QUESTION = 10;
+                break;
+        }
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);

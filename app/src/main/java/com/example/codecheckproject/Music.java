@@ -16,7 +16,6 @@ public class Music extends Service {
         player.setLooping(true);
         player.start();
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         return START_NOT_STICKY;
@@ -30,7 +29,6 @@ public class Music extends Service {
             player = null;
         }
     }
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
