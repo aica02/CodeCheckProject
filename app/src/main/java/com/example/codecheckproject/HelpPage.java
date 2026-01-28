@@ -29,6 +29,7 @@ public class HelpPage extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
 
         backBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(HelpPage.this, SettingsPage.class);
             startActivity(intent);
         });

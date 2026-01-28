@@ -34,9 +34,11 @@ public class SettingsPage extends AppCompatActivity {
         isNightModeOn = sharedPreferences.getBoolean("nightMode", false);
 
         if (isNightModeOn) {
+            SoundEffects.playClick();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             nightModeSwitch.setChecked(true);
         } else {
+            SoundEffects.playClick();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             nightModeSwitch.setChecked(false);
         }
@@ -62,11 +64,13 @@ public class SettingsPage extends AppCompatActivity {
 
 
         helpBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(SettingsPage.this, HelpPage.class);
             startActivity(intent);
         });
 
         backBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(SettingsPage.this, HomePage.class);
             startActivity(intent);
         });

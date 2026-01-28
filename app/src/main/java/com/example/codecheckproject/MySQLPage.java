@@ -252,9 +252,11 @@ public class MySQLPage extends AppCompatActivity {
         int scoreThisQuestion = 0;
 
         if (selected.equals(answers[q])) {
+            SoundEffects.playCorrect();
             scoreThisQuestion = 5 * (int) timeLeft;
             Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
         } else {
+            SoundEffects.playWrong();
             Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 

@@ -26,21 +26,29 @@ public class CategoriesPage extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
 
         javaBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoriesPage.this, JavaPage.class);
+            SoundEffects.playClick();
+            Intent intent = new Intent(CategoriesPage.this, DifficultyPage.class);
+            intent.putExtra("category", "java");
             startActivity(intent);
         });
 
         cssBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoriesPage.this, CssPage.class);
+            SoundEffects.playClick();
+            Intent intent = new Intent(CategoriesPage.this, DifficultyPage.class);
+            intent.putExtra("category", "css");
             startActivity(intent);
         });
 
         mysqlBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CategoriesPage.this, MySQLPage.class);
+            SoundEffects.playClick();
+            Intent intent = new Intent(CategoriesPage.this, DifficultyPage.class);
+            intent.putExtra("category", "mysql");
             startActivity(intent);
         });
 
+
         backBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(CategoriesPage.this, HomePage.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_in_right );

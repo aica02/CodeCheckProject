@@ -27,12 +27,14 @@ public class HomePage extends AppCompatActivity {
         exitBtn = findViewById(R.id.exitBtn);
 
         playBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(HomePage.this, CategoriesPage.class);
             startActivity(intent);
             overridePendingTransition(R.anim.scale_fade_in, R.anim.scale_fade_out);
         });
 
         settingsBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
             Intent intent = new Intent(HomePage.this, SettingsPage.class);
             startActivity(intent);
         });
@@ -48,7 +50,7 @@ public class HomePage extends AppCompatActivity {
         TextView tapToEnter = findViewById(R.id.Choose);
 
         blinkAnimator = ObjectAnimator.ofFloat(tapToEnter, "alpha", 1f, 0f);
-        blinkAnimator.setDuration(800); // speed of blink
+        blinkAnimator.setDuration(800);
         blinkAnimator.setRepeatMode(ValueAnimator.REVERSE);
         blinkAnimator.setRepeatCount(ValueAnimator.INFINITE);
         blinkAnimator.start();

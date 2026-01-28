@@ -49,6 +49,7 @@ public class LandingPage extends AppCompatActivity {
 
 
         startService(new Intent(this, Music.class));
+        SoundEffects.init(this);
     }
 
     @Override

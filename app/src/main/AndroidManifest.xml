@@ -24,6 +24,9 @@
             android:name=".HelpPage"
             android:exported="false" />
         <activity
+            android:name=".DifficultyPage"
+            android:exported="false" />
+        <activity
             android:name=".LandingPage"
             android:exported="true">
             <intent-filter>

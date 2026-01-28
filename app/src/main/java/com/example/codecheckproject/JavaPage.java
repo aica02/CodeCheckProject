@@ -161,7 +161,7 @@ public class JavaPage extends AppCompatActivity {
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
-    final int TIME_PER_QUESTION = 20;
+    int TIME_PER_QUESTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +169,20 @@ public class JavaPage extends AppCompatActivity {
         setContentView(R.layout.activity_java_page);
         UIHelper.hideSystemUI(this);
         stopService(new Intent(this, Music.class));
+        String difficulty = getIntent().getStringExtra("difficulty");
+
+        switch (difficulty != null ? difficulty : "easy") {
+            case "easy":
+                TIME_PER_QUESTION = 30;
+                break;
+            case "medium":
+                TIME_PER_QUESTION = 20;
+                break;
+            case "hard":
+                TIME_PER_QUESTION = 10;
+                break;
+        }
+
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
@@ -182,6 +196,7 @@ public class JavaPage extends AppCompatActivity {
         generateRandomQuestions();
 
         View.OnClickListener listener = v -> {
+            SoundEffects.playClick();
             Button b = (Button) v;
             checkAnswer(b.getText().toString());
         };
@@ -233,9 +248,11 @@ public class JavaPage extends AppCompatActivity {
         int scoreThisQuestion = 0;
 
         if (selected.equals(answers[q])) {
+            SoundEffects.playCorrect();
             scoreThisQuestion = 5 * (int) timeLeft;
             Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
         } else {
+            SoundEffects.playWrong();
             Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 
