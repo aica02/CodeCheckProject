@@ -148,6 +148,10 @@ public class CssPage extends AppCompatActivity {
         UIHelper.hideSystemUI(this);
         stopService(new Intent(this, Music.class));
 
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.ingamebackground);
+        startService(musicIntent);
+
         String difficulty = getIntent().getStringExtra("difficulty");
 
         switch (difficulty != null ? difficulty : "easy") {
@@ -227,9 +231,11 @@ public class CssPage extends AppCompatActivity {
         int scoreThisQuestion = 0;
 
         if (selected.equals(answers[q])) {
+            SoundEffects.playCorrect();
             scoreThisQuestion = 5 * (int) timeLeft;
             Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
         } else {
+            SoundEffects.playWrong();
             Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 

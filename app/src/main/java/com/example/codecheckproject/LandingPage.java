@@ -48,7 +48,10 @@ public class LandingPage extends AppCompatActivity {
         });
 
 
-        startService(new Intent(this, Music.class));
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.codecheckbgmusic);
+        startService(musicIntent);
+
         SoundEffects.init(this);
     }
 

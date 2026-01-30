@@ -188,6 +188,10 @@ public class MySQLPage extends AppCompatActivity {
         UIHelper.hideSystemUI(this);
         stopService(new Intent(this, Music.class));
 
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.ingamebackground);
+        startService(musicIntent);
+
         String difficulty = getIntent().getStringExtra("difficulty");
 
         switch (difficulty != null ? difficulty : "easy") {

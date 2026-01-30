@@ -8,17 +8,30 @@ import android.os.IBinder;
 public class Music extends Service {
 
     private MediaPlayer player;
+    private int currentMusic = -1;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        player = MediaPlayer.create(this, R.raw.codecheckbgmusic);
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        int musicResId = intent.getIntExtra("music", -1);
+
+        // Only change music if it's different
+        if (musicResId != -1 && musicResId != currentMusic) {
+            playMusic(musicResId);
+        }
+
+        return START_STICKY;
+    }
+
+    private void playMusic(int resId) {
+        if (player != null) {
+            player.stop();
+            player.release();
+        }
+
+        currentMusic = resId;
+        player = MediaPlayer.create(this, resId);
         player.setLooping(true);
         player.start();
-    }
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_NOT_STICKY;
     }
 
     @Override
@@ -29,9 +42,9 @@ public class Music extends Service {
             player = null;
         }
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
-
 }

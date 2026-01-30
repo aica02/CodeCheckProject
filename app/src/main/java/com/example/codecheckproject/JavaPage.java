@@ -169,6 +169,11 @@ public class JavaPage extends AppCompatActivity {
         setContentView(R.layout.activity_java_page);
         UIHelper.hideSystemUI(this);
         stopService(new Intent(this, Music.class));
+
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.ingamebackground);
+        startService(musicIntent);
+
         String difficulty = getIntent().getStringExtra("difficulty");
 
         switch (difficulty != null ? difficulty : "easy") {
