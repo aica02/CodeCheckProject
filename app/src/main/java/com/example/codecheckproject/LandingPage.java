@@ -47,11 +47,6 @@ public class LandingPage extends AppCompatActivity {
             overridePendingTransition(R.anim.scale_fade_in, R.anim.scale_fade_out);
         });
 
-
-        Intent musicIntent = new Intent(this, Music.class);
-        musicIntent.putExtra("music", R.raw.codecheckbgmusic);
-        startService(musicIntent);
-
         SoundEffects.init(this);
     }
 
@@ -74,6 +69,16 @@ public class LandingPage extends AppCompatActivity {
         blinkAnimator.start();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.codecheckbgmusic);
+        startService(musicIntent);
+    }
+
 
     @Override
     protected void onStop() {
