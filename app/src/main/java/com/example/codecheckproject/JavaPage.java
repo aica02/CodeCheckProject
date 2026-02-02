@@ -25,6 +25,7 @@ public class JavaPage extends AppCompatActivity {
             "int x = 5; System.out.println(x++ + x);",
             "int a = 2; int b = 3; System.out.println(a == b);",
             "int x = 4; System.out.println(x > 3 && x < 10);",
+
             "int x = 1; System.out.println(x++);",
             "int x = 1; System.out.println(++x);",
             "int a = 6; System.out.println(a / 2);",
@@ -35,6 +36,7 @@ public class JavaPage extends AppCompatActivity {
             "int a = 2; System.out.println(a * a);",
             "int a = 10; a /= 2; System.out.println(a);",
             "int x = 8; System.out.println(x > 5);",
+
             "int a = 1; int b = 2; System.out.println(a < b);",
             "int a = 5; int b = 5; System.out.println(a == b);",
             "int x = 7; System.out.println(x >= 7);",
@@ -45,6 +47,7 @@ public class JavaPage extends AppCompatActivity {
             "int x = 10; System.out.println(x / 3);",
             "int x = 10; System.out.println(x % 3);",
             "int x = 5; System.out.println(x * 0);",
+
             "int x = 1; System.out.println(x == 1 && x > 0);",
             "int x = 1; System.out.println(x == 1 || x > 5);",
             "boolean b = false; System.out.println(b || true);",
@@ -55,6 +58,7 @@ public class JavaPage extends AppCompatActivity {
             "int x = 9; System.out.println(x != 8);",
             "int a = 1; System.out.println(a + 1 + 1);",
             "int a = 2; System.out.println(a * 3 - 1);",
+
             "int a = 7; System.out.println(a % 2);",
             "int x = 5; x += 2; System.out.println(x);",
             "int x = 10; x -= 3; System.out.println(x);",
@@ -64,14 +68,7 @@ public class JavaPage extends AppCompatActivity {
             "boolean b = true; System.out.println(b || false);",
             "int x = 4; System.out.println(x * 2);",
             "int a = 3; System.out.println(a + 4);",
-            "int x = 6; System.out.println(x - 3);",
-            "int x = 7; System.out.println(x * 0);",
-            "int a = 2; int b = 5; System.out.println(a < b);",
-            "int a = 2; int b = 5; System.out.println(a > b);",
-            "boolean c = false; System.out.println(!c);",
-            "int a = 3; int b = 3; System.out.println(a == b);",
-            "int x = 10; System.out.println(x / 2);",
-            "int x = 10; System.out.println(x % 4);"
+            "int x = 6; System.out.println(x - 3);"
     };
 
     String[][] options = {
@@ -83,8 +80,9 @@ public class JavaPage extends AppCompatActivity {
             {"6","3","5","9"},
             {"1","0","2","3"},
             {"11","10","12","9"},
-            {"false","true","0","1"},
             {"true","false","0","1"},
+            {"true","false","0","1"},
+
             {"1","0","2","3"},
             {"2","1","0","3"},
             {"3","2","6","1"},
@@ -95,102 +93,64 @@ public class JavaPage extends AppCompatActivity {
             {"4","2","3","1"},
             {"5","10","15","20"},
             {"true","false","0","1"},
-            {"true","false","1","0"},
-            {"true","false","1","1"},
-            {"true","false","1","0"},
+
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
             {"true","false","0","1"},
             {"3","4","5","2"},
             {"3","2","4","1"},
             {"7","6","5","4"},
             {"3","4","5","6"},
             {"1","2","0","3"},
-            {"1","0","2","3"},
             {"0","1","2","3"},
-            {"true","false","1","0"},
-            {"true","false","1","0"},
-            {"true","false","1","0"},
-            {"false","true","1","0"},
-            {"true","false","1","0"},
-            {"true","false","1","0"},
-            {"3","4","5","6"},
-            {"7","8","6","5"},
-            {"2","3","4","5"},
-            {"7","5","6","4"},
-            {"2","1","3","0"},
-            {"7","5","6","4"},
-            {"false","true","1","0"},
-            {"true","false","1","0"},
-            {"8","9","10","7"},
-            {"7","5","6","4"},
-            {"3","4","5","6"},
-            {"0","1","2","3"},
-            {"true","false","0","1"},
-            {"false","true","0","1"},
-            {"false","true","0","1"},
-            {"true","false","0","1"},
-            {"5","6","7","4"},
-            {"7","6","5","8"},
+
             {"true","false","0","1"},
             {"true","false","0","1"},
-            {"5","6","7","8"},
-            {"7","6","5","8"},
             {"true","false","0","1"},
             {"true","false","0","1"},
-            {"3","4","5","6"},
-            {"6","5","7","4"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
+            {"true","false","0","1"},
             {"3","2","4","1"},
-            {"5","6","7","8"},
-            {"5","6","7","8"},
+            {"5","4","6","7"},
+
+            {"1","0","2","3"},
+            {"7","6","5","8"},
+            {"7","6","5","8"},
+            {"2","4","1","8"},
+            {"3","5","1","8"},
             {"true","false","0","1"},
             {"true","false","0","1"},
-            {"8","7","6","5"},
-            {"7","6","5","8"}
+            {"8","6","7","5"},
+            {"7","5","6","4"},
+            {"3","2","4","1"}
     };
 
     String[] answers = {
             "10","9","9","6","3","6","1","11","false","true",
             "1","2","3","2","false","6","5","4","5","true",
             "true","true","true","true","3","3","7","3","1","0",
-            "true","true","true","false","true","true","3","7","2","1",
-            "false","true","8","7","3","3","0","true","5","7"
+            "true","true","true","true","true","false","false","true","3","5",
+            "1","7","7","2","3","false","true","8","7","3"
     };
 
     int[] randomQuestions;
     int index = 0;
     int totalScore = 0;
+    int totalTimeTaken = 0;
+
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
     int TIME_PER_QUESTION;
+    String difficulty = "easy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_page);
-        UIHelper.hideSystemUI(this);
-        stopService(new Intent(this, Music.class));
-
-        Intent musicIntent = new Intent(this, Music.class);
-        musicIntent.putExtra("music", R.raw.ingamebackground);
-        startService(musicIntent);
-
-        String difficulty = getIntent().getStringExtra("difficulty");
-
-        switch (difficulty != null ? difficulty : "easy") {
-            case "easy":
-                TIME_PER_QUESTION = 30;
-                break;
-            case "medium":
-                TIME_PER_QUESTION = 20;
-                break;
-            case "hard":
-                TIME_PER_QUESTION = 10;
-                break;
-            default:
-                TIME_PER_QUESTION = 10;
-                break;
-        }
-
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
@@ -201,10 +161,19 @@ public class JavaPage extends AppCompatActivity {
         btn4 = findViewById(R.id.btn4);
         progressBar = findViewById(R.id.progressBar);
 
+        String selectedDifficulty = getIntent().getStringExtra("difficulty");
+        difficulty = selectedDifficulty != null ? selectedDifficulty.toLowerCase() : "easy";
+
+        switch (difficulty) {
+            case "easy": TIME_PER_QUESTION = 30; break;
+            case "medium": TIME_PER_QUESTION = 20; break;
+            case "hard": TIME_PER_QUESTION = 10; break;
+            default: TIME_PER_QUESTION = 30;
+        }
+
         generateRandomQuestions();
 
         View.OnClickListener listener = v -> {
-            SoundEffects.playClick();
             Button b = (Button) v;
             checkAnswer(b.getText().toString());
         };
@@ -253,21 +222,16 @@ public class JavaPage extends AppCompatActivity {
 
         int q = randomQuestions[index];
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
-        int scoreThisQuestion = 0;
+
+        totalTimeTaken += (TIME_PER_QUESTION - (int) timeLeft);
 
         if (selected.equals(answers[q])) {
-            SoundEffects.playCorrect();
-            scoreThisQuestion = 5 * (int) timeLeft;
-            Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
-        } else {
-            SoundEffects.playWrong();
-            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
+            totalScore += 5 * timeLeft;
         }
 
-        totalScore += scoreThisQuestion;
         index++;
-        loadQuestion();
         tvScore.setText("Score: " + totalScore);
+        loadQuestion();
     }
 
     void startTimer() {
@@ -277,7 +241,7 @@ public class JavaPage extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Toast.makeText(JavaPage.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                totalTimeTaken += TIME_PER_QUESTION;
                 index++;
                 loadQuestion();
             }
@@ -287,6 +251,9 @@ public class JavaPage extends AppCompatActivity {
     void goToScorePage() {
         Intent intent = new Intent(this, ScorePage.class);
         intent.putExtra("score", totalScore);
+        intent.putExtra("timeTaken", totalTimeTaken);
+        intent.putExtra("category", "Java");
+        intent.putExtra("difficulty", difficulty); // always lowercase for consistency
         startActivity(intent);
         finish();
     }

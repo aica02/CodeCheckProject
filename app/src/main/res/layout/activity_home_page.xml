@@ -54,6 +54,14 @@
             app:cornerRadius="10dp" />
 
         <Button
+            android:id="@+id/leaderboardsBtn"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:text="Leaderboards"
+            android:backgroundTint="@color/green"
+            app:cornerRadius="10dp" />
+
+        <Button
             android:id="@+id/settingsBtn"
             android:layout_width="180dp"
             android:layout_height="80dp"

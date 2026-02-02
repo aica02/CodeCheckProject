@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeCheckProject">
         <activity
+            android:name=".LeaderboardsPage"
+            android:exported="false" />
+        <activity
             android:name=".CssPage"
             android:exported="false" />
         <activity

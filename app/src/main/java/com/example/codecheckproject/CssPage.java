@@ -13,7 +13,6 @@ public class CssPage extends AppCompatActivity {
     Button btn1, btn2, btn3, btn4;
     ProgressBar progressBar;
 
-    // 50 CSS questions
     String[] questions = {
             "Which property is used to change the background color?",
             "How do you make text bold in CSS?",
@@ -136,38 +135,19 @@ public class CssPage extends AppCompatActivity {
     int[] randomQuestions;
     int index = 0;
     int totalScore = 0;
+    int totalTimeTaken = 0;
+
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
     int TIME_PER_QUESTION;
+    String difficulty = "easy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_css_page);
-        UIHelper.hideSystemUI(this);
-        stopService(new Intent(this, Music.class));
 
-        Intent musicIntent = new Intent(this, Music.class);
-        musicIntent.putExtra("music", R.raw.ingamebackground);
-        startService(musicIntent);
-
-        String difficulty = getIntent().getStringExtra("difficulty");
-
-        switch (difficulty != null ? difficulty : "easy") {
-            case "easy":
-                TIME_PER_QUESTION = 30;
-                break;
-            case "medium":
-                TIME_PER_QUESTION = 20;
-                break;
-            case "hard":
-                TIME_PER_QUESTION = 10;
-                break;
-            default:
-                TIME_PER_QUESTION = 10;
-                break;
-        }
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);
@@ -176,6 +156,16 @@ public class CssPage extends AppCompatActivity {
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         progressBar = findViewById(R.id.progressBar);
+
+        String selectedDifficulty = getIntent().getStringExtra("difficulty");
+        difficulty = selectedDifficulty != null ? selectedDifficulty.toLowerCase() : "easy";
+
+        switch (difficulty) {
+            case "easy": TIME_PER_QUESTION = 30; break;
+            case "medium": TIME_PER_QUESTION = 20; break;
+            case "hard": TIME_PER_QUESTION = 10; break;
+            default: TIME_PER_QUESTION = 30;
+        }
 
         generateRandomQuestions();
 
@@ -228,21 +218,15 @@ public class CssPage extends AppCompatActivity {
 
         int q = randomQuestions[index];
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
-        int scoreThisQuestion = 0;
+
+        totalTimeTaken += (TIME_PER_QUESTION - (int) timeLeft);
 
         if (selected.equals(answers[q])) {
-            SoundEffects.playCorrect();
-            scoreThisQuestion = 5 * (int) timeLeft;
-            Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
-        } else {
-            SoundEffects.playWrong();
-            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
+            totalScore += 5 * timeLeft;
         }
 
-        totalScore += scoreThisQuestion;
-        tvScore.setText("Score: " + totalScore);
-
         index++;
+        tvScore.setText("Score: " + totalScore);
         loadQuestion();
     }
 
@@ -253,7 +237,7 @@ public class CssPage extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Toast.makeText(CssPage.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                totalTimeTaken += TIME_PER_QUESTION;
                 index++;
                 loadQuestion();
             }
@@ -263,6 +247,9 @@ public class CssPage extends AppCompatActivity {
     void goToScorePage() {
         Intent intent = new Intent(this, ScorePage.class);
         intent.putExtra("score", totalScore);
+        intent.putExtra("timeTaken", totalTimeTaken);
+        intent.putExtra("category", "CSS");
+        intent.putExtra("difficulty", difficulty); // always lowercase for consistency
         startActivity(intent);
         finish();
     }

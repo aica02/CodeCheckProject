@@ -3,6 +3,7 @@ package com.example.codecheckproject;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
@@ -10,9 +11,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+import java.util.Locale;
+
 public class HomePage extends AppCompatActivity {
 
-    private Button playBtn, settingsBtn, exitBtn;
+    private Button playBtn, settingsBtn, exitBtn,leaderboardsBtn;
 
     private ObjectAnimator blinkAnimator;
     @Override
@@ -20,11 +24,12 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         UIHelper.hideSystemUI(this);
-
-
+        leaderboardsBtn = findViewById(R.id.leaderboardsBtn);
         playBtn = findViewById(R.id.playBtn);
         settingsBtn = findViewById(R.id.settingsBtn);
         exitBtn = findViewById(R.id.exitBtn);
+
+
 
         playBtn.setOnClickListener(v -> {
             SoundEffects.playClick();
@@ -43,6 +48,14 @@ public class HomePage extends AppCompatActivity {
             stopService(new Intent(HomePage.this, Music.class));
             finishAffinity();
         });
+
+        leaderboardsBtn.setOnClickListener(v -> {
+            SoundEffects.playClick();
+            Intent intent = new Intent(HomePage.this, LeaderboardsPage.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 
     protected void onStart() {

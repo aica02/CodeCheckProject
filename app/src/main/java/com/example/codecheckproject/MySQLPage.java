@@ -176,38 +176,19 @@ public class MySQLPage extends AppCompatActivity {
     int[] randomQuestions;
     int index = 0;
     int totalScore = 0;
+    int totalTimeTaken = 0;
+
     CountDownTimer timer;
 
     final int QUESTION_COUNT = 5;
     int TIME_PER_QUESTION;
+    String difficulty = "easy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_sqlpage);
-        UIHelper.hideSystemUI(this);
-        stopService(new Intent(this, Music.class));
 
-        Intent musicIntent = new Intent(this, Music.class);
-        musicIntent.putExtra("music", R.raw.ingamebackground);
-        startService(musicIntent);
-
-        String difficulty = getIntent().getStringExtra("difficulty");
-
-        switch (difficulty != null ? difficulty : "easy") {
-            case "easy":
-                TIME_PER_QUESTION = 30;
-                break;
-            case "medium":
-                TIME_PER_QUESTION = 20;
-                break;
-            case "hard":
-                TIME_PER_QUESTION = 10;
-                break;
-            default:
-                TIME_PER_QUESTION = 10;
-                break;
-        }
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
         tvTimer = findViewById(R.id.tvTimer);
@@ -216,6 +197,16 @@ public class MySQLPage extends AppCompatActivity {
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         progressBar = findViewById(R.id.progressBar);
+
+        String selectedDifficulty = getIntent().getStringExtra("difficulty");
+        difficulty = selectedDifficulty != null ? selectedDifficulty.toLowerCase() : "easy";
+
+        switch (difficulty) {
+            case "easy": TIME_PER_QUESTION = 30; break;
+            case "medium": TIME_PER_QUESTION = 20; break;
+            case "hard": TIME_PER_QUESTION = 10; break;
+            default: TIME_PER_QUESTION = 30;
+        }
 
         generateRandomQuestions();
 
@@ -238,9 +229,7 @@ public class MySQLPage extends AppCompatActivity {
         Collections.shuffle(list);
 
         randomQuestions = new int[QUESTION_COUNT];
-        for (int i = 0; i < QUESTION_COUNT; i++) {
-            randomQuestions[i] = list.get(i);
-        }
+        for (int i = 0; i < QUESTION_COUNT; i++) randomQuestions[i] = list.get(i);
     }
 
     void loadQuestion() {
@@ -261,6 +250,7 @@ public class MySQLPage extends AppCompatActivity {
         btn4.setText(shuffled.get(3));
 
         progressBar.setProgress((index + 1) * 100 / QUESTION_COUNT);
+
         startTimer();
     }
 
@@ -269,22 +259,16 @@ public class MySQLPage extends AppCompatActivity {
 
         int q = randomQuestions[index];
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
-        int scoreThisQuestion = 0;
+
+        totalTimeTaken += (TIME_PER_QUESTION - (int) timeLeft);
 
         if (selected.equals(answers[q])) {
-            SoundEffects.playCorrect();
-            scoreThisQuestion = 5 * (int) timeLeft;
-            Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
-        } else {
-            SoundEffects.playWrong();
-            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
+            totalScore += 5 * timeLeft;
         }
 
-        totalScore += scoreThisQuestion;
-
         index++;
+        tvScore.setText("Score: " + totalScore);
         loadQuestion();
-        tvScore.setText("Score: "+totalScore);
     }
 
     void startTimer() {
@@ -294,7 +278,7 @@ public class MySQLPage extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Toast.makeText(MySQLPage.this, "Time's up!", Toast.LENGTH_SHORT).show();
+                totalTimeTaken += TIME_PER_QUESTION;
                 index++;
                 loadQuestion();
             }
@@ -304,6 +288,9 @@ public class MySQLPage extends AppCompatActivity {
     void goToScorePage() {
         Intent intent = new Intent(this, ScorePage.class);
         intent.putExtra("score", totalScore);
+        intent.putExtra("timeTaken", totalTimeTaken);
+        intent.putExtra("category", "MySQL");
+        intent.putExtra("difficulty", difficulty); // always lowercase for consistency
         startActivity(intent);
         finish();
     }
