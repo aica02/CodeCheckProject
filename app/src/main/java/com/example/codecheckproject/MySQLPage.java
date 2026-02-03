@@ -188,6 +188,8 @@ public class MySQLPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_sqlpage);
+        UIHelper.hideSystemUI(this);
+
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
@@ -231,6 +233,15 @@ public class MySQLPage extends AppCompatActivity {
         randomQuestions = new int[QUESTION_COUNT];
         for (int i = 0; i < QUESTION_COUNT; i++) randomQuestions[i] = list.get(i);
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.ingamebackground);
+        startService(musicIntent);
+    }
+
 
     void loadQuestion() {
         if (index >= QUESTION_COUNT) {
@@ -259,11 +270,19 @@ public class MySQLPage extends AppCompatActivity {
 
         int q = randomQuestions[index];
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
-
+        int scoreThisQuestion = 0;
         totalTimeTaken += (TIME_PER_QUESTION - (int) timeLeft);
 
         if (selected.equals(answers[q])) {
             totalScore += 5 * timeLeft;
+        }
+        if (selected.equals(answers[q])) {
+            SoundEffects.playCorrect();
+            scoreThisQuestion = 5 * (int) timeLeft;
+            Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
+        } else {
+            SoundEffects.playWrong();
+            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 
         index++;

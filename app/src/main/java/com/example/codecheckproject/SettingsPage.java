@@ -12,11 +12,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 public class SettingsPage extends AppCompatActivity {
 
-    private Switch nightModeSwitch;
-    private Button helpBtn, backBtn;
-    private SharedPreferences sharedPreferences;
-    private boolean isNightModeOn;
 
+    private Button helpBtn, backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,42 +22,8 @@ public class SettingsPage extends AppCompatActivity {
         getWindow().setWindowAnimations(0);
         UIHelper.hideSystemUI(this);
 
-
-        nightModeSwitch = findViewById(R.id.nightModeSwitch);
         helpBtn = findViewById(R.id.helpBtn);
         backBtn = findViewById(R.id.backBtn);
-
-        sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
-        isNightModeOn = sharedPreferences.getBoolean("nightMode", false);
-
-        if (isNightModeOn) {
-            SoundEffects.playClick();
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            nightModeSwitch.setChecked(true);
-        } else {
-            SoundEffects.playClick();
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            nightModeSwitch.setChecked(false);
-        }
-
-        nightModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
-            if (isChecked == isNightModeOn) {
-                return;
-            }
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("nightMode", isChecked);
-            editor.apply();
-
-            isNightModeOn = isChecked;
-
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            }
-        });
 
 
         helpBtn.setOnClickListener(v -> {

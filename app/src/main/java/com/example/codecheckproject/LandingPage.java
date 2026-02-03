@@ -68,6 +68,10 @@ public class LandingPage extends AppCompatActivity {
         blinkAnimator.setRepeatCount(ValueAnimator.INFINITE);
         blinkAnimator.start();
 
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.codecheckbgmusic);
+        startService(musicIntent);
+
     }
 
     @Override

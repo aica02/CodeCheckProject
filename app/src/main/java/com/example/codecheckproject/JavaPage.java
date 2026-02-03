@@ -151,6 +151,7 @@ public class JavaPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_page);
+        UIHelper.hideSystemUI(this);
 
         tvCode = findViewById(R.id.tvCode);
         tvScore = findViewById(R.id.tvScore);
@@ -186,6 +187,7 @@ public class JavaPage extends AppCompatActivity {
         loadQuestion();
     }
 
+
     void generateRandomQuestions() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < questions.length; i++) list.add(i);
@@ -217,16 +219,33 @@ public class JavaPage extends AppCompatActivity {
         startTimer();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent musicIntent = new Intent(this, Music.class);
+        musicIntent.putExtra("music", R.raw.ingamebackground);
+        startService(musicIntent);
+    }
+
     void checkAnswer(String selected) {
         if (timer != null) timer.cancel();
 
         int q = randomQuestions[index];
         long timeLeft = Long.parseLong(tvTimer.getText().toString().replace("Time-Left: ", ""));
-
+        int scoreThisQuestion = 0;
         totalTimeTaken += (TIME_PER_QUESTION - (int) timeLeft);
 
         if (selected.equals(answers[q])) {
             totalScore += 5 * timeLeft;
+        }
+        if (selected.equals(answers[q])) {
+            SoundEffects.playCorrect();
+            scoreThisQuestion = 5 * (int) timeLeft;
+            Toast.makeText(this, "Correct! +" + scoreThisQuestion, Toast.LENGTH_SHORT).show();
+        } else {
+            SoundEffects.playWrong();
+            Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         }
 
         index++;
