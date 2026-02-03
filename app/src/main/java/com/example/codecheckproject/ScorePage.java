@@ -75,7 +75,11 @@ public class ScorePage extends AppCompatActivity {
 
         homeBtn.setOnClickListener(v -> {
             startActivity(new Intent(ScorePage.this, HomePage.class));
+            stopService(new Intent(this, Music.class));
             finish();
+            Intent musicIntent = new Intent(this, Music.class);
+            musicIntent.putExtra("music", R.raw.codecheckbgmusic); // main music
+            startService(musicIntent);
         });
     }
 

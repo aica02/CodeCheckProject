@@ -48,6 +48,16 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:fontFamily="@font/lato_bold"/>
+
+                <Button
+                    android:id="@+id/btnPause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⏸"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@android:color/transparent"
+                    android:padding="8dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -177,6 +187,33 @@
             android:textSize="15sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pauseOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnResume"
+            android:text="Resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnQuit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quit"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </FrameLayout>

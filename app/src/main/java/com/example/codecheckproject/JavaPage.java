@@ -11,7 +11,7 @@ import java.util.*;
 public class JavaPage extends AppCompatActivity {
 
     TextView tvCode, tvTimer, tvScore;
-    Button btn1, btn2, btn3, btn4;
+    Button btn1, btn2, btn3, btn4,btnPause, btnResume, btnQuit;
     ProgressBar progressBar;
 
     String[] questions = {
@@ -141,7 +141,10 @@ public class JavaPage extends AppCompatActivity {
     int totalScore = 0;
     int totalTimeTaken = 0;
 
+    View pauseOverlay;
+    boolean isPaused = false;
     CountDownTimer timer;
+    long timeLeftMs;
 
     final int QUESTION_COUNT = 5;
     int TIME_PER_QUESTION;
@@ -161,6 +164,11 @@ public class JavaPage extends AppCompatActivity {
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         progressBar = findViewById(R.id.progressBar);
+        pauseOverlay = findViewById(R.id.pauseOverlay);
+        btnPause = findViewById(R.id.btnPause);
+        btnResume = findViewById(R.id.btnResume);
+        btnQuit = findViewById(R.id.btnQuit);
+
 
         String selectedDifficulty = getIntent().getStringExtra("difficulty");
         difficulty = selectedDifficulty != null ? selectedDifficulty.toLowerCase() : "easy";
@@ -183,6 +191,10 @@ public class JavaPage extends AppCompatActivity {
         btn2.setOnClickListener(listener);
         btn3.setOnClickListener(listener);
         btn4.setOnClickListener(listener);
+
+        btnPause.setOnClickListener(v -> pauseGame());
+        btnResume.setOnClickListener(v -> resumeGame());
+        btnQuit.setOnClickListener(v -> finish());
 
         loadQuestion();
     }
@@ -216,7 +228,7 @@ public class JavaPage extends AppCompatActivity {
 
         progressBar.setProgress((index + 1) * 100 / QUESTION_COUNT);
 
-        startTimer();
+        startTimer(TIME_PER_QUESTION * 1000);
     }
 
     @Override
@@ -253,9 +265,27 @@ public class JavaPage extends AppCompatActivity {
         loadQuestion();
     }
 
-    void startTimer() {
+    void pauseGame() {
+        isPaused = true;
+        if (timer != null) timer.cancel();
+        pauseOverlay.setVisibility(View.VISIBLE);
+        stopService(new Intent(this, Music.class));
+    }
+
+    void resumeGame() {
+        isPaused = false;
+        pauseOverlay.setVisibility(View.GONE);
+        startTimer(timeLeftMs);
+
+        Intent music = new Intent(this, Music.class);
+        music.putExtra("music", R.raw.ingamebackground);
+        startService(music);
+    }
+    void startTimer(long duration) {
+        timeLeftMs = duration;
         timer = new CountDownTimer(TIME_PER_QUESTION * 1000, 1000) {
             public void onTick(long ms) {
+                timeLeftMs = ms;
                 tvTimer.setText("Time-Left: " + (ms / 1000));
             }
 
