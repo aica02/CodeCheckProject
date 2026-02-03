@@ -230,8 +230,12 @@ public class MySQLPage extends AppCompatActivity {
         btn4.setOnClickListener(listener);
         btnPause.setOnClickListener(v -> pauseGame());
         btnResume.setOnClickListener(v -> resumeGame());
-        btnQuit.setOnClickListener(v -> finish());
-
+        btnQuit.setOnClickListener(v -> {
+            Intent musicIntent = new Intent(this, Music.class);
+            musicIntent.putExtra("music", R.raw.codecheckbgmusic); // main music
+            startService(musicIntent);
+            finish();
+        });
 
         loadQuestion();
     }

@@ -195,7 +195,12 @@ public class CssPage extends AppCompatActivity {
 
         btnPause.setOnClickListener(v -> pauseGame());
         btnResume.setOnClickListener(v -> resumeGame());
-        btnQuit.setOnClickListener(v -> finish());
+        btnQuit.setOnClickListener(v -> {
+            Intent musicIntent = new Intent(this, Music.class);
+            musicIntent.putExtra("music", R.raw.codecheckbgmusic); // main music
+            startService(musicIntent);
+            finish();
+        });
 
         loadQuestion();
     }

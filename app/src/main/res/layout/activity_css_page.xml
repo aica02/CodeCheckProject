@@ -201,7 +201,7 @@
         <Button
             android:id="@+id/btnResume"
             android:text="Resume"
-            android:layout_width="match_parent"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green"
@@ -209,7 +209,7 @@
 
         <Button
             android:id="@+id/btnQuit"
-            android:layout_width="match_parent"
+            android:layout_width="200sp"
             android:layout_height="wrap_content"
             android:text="Quit"
             android:backgroundTint="@color/green"
